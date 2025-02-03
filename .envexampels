@@ -1,0 +1,6 @@
+DATABASE_URL=mongodb://localhost/pharmaDirect
+JWT_SECRET=mysecretkey
+PORT=3000
+jwtConstants=YoucodeBrif23ILXCB
+JWT_SECRET=oucodeBrif23ILXCB
+JWT_EXPIRES_IN=90
