@@ -26,7 +26,7 @@ async function bootstrap() {
     prefix: '/images',
   });
 
-  app.setGlobalPrefix('api');
+  app.setGlobalPrefix('/api');
   await app.listen(3000);
 }
 bootstrap();
