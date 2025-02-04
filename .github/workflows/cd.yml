@@ -29,4 +29,4 @@ jobs:
           fi
 
       - name: Run Docker Container
-        run: sudo docker run -d -p 3001:3001 --name pharmacy-container bilanox/pharmacy
+        run: sudo docker run -d -p 3000:3000 --name pharmacy-container bilanox/pharmacy
