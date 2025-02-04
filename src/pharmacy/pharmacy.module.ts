@@ -5,10 +5,7 @@ import { Pharmacy, PharmacySchema } from './schema/pharmacy.schema';
 import { PharmacyController } from './pharmacy.controller';
 import { PharmacyServices } from './pharmacy.service';
 import { JwtModule } from '@nestjs/jwt';
-import { AuthService } from 'src/auth/auth.service';
-import { AuthModule } from 'src/auth/auth.module';
-import { UploadController } from 'src/uploads/upload.controller';
-import { uploadModule } from 'src/uploads/upload.module';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
   imports: [

@@ -3,7 +3,6 @@ import { CreatePharmacyDto } from './dto/createPharmacy';
 import { Pharmacy } from 'src/schemas/pharmacy.schema';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class PharmacyServices {

@@ -17,11 +17,11 @@ import {
 } from '@nestjs/common';
 import { CreatePharmacyDto } from './dto/createPharmacy';
 import { UpdatePharmacyDto } from './dto/updatePharmacy';
-import { Pharmacy } from 'src/schemas/pharmacy.schema';
+import { Pharmacy } from '../schemas/pharmacy.schema';
 import { PharmacyServices } from './pharmacy.service';
-import { Roles } from 'src/auth/roles/roles.decorator';
-import { AuthGuard } from 'src/guard/auth.guard';
-import { RolesGuard } from 'src/guard/admin.guard';
+import { Roles } from '../auth/roles/roles.decorator';
+import { AuthGuard } from '../guard/auth.guard';
+import { RolesGuard } from '../guard/admin.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';

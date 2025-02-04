@@ -1,6 +1,6 @@
 import { Controller, Post, Delete, Get, Param, Body, UseGuards, Req } from '@nestjs/common';
 import { FavoriteService } from './favorite.service';
-import { AuthGuard } from 'src/guard/auth.guard';
+import { AuthGuard } from '../guard/auth.guard';
 
 @Controller('favorites')
 @UseGuards(AuthGuard)
