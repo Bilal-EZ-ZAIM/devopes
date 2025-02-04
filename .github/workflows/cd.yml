@@ -21,12 +21,21 @@ jobs:
           sudo docker stop pharmacy-container || true
           sudo docker rm -f pharmacy-container || true
 
-      - name: Check if port 3001 is in use
+      - name: Check if port 3000 is in use
         run: |
-          if sudo ss -tuln | grep -q ':3001'; then
-            echo "Port 3001 is in use. Stopping conflicting container or process."
-            sudo fuser -k 3001/tcp || true
+          if sudo ss -tuln | grep -q ':3000'; then
+            echo "Port 3000 is in use. Stopping conflicting container or process."
+            sudo fuser -k 3000/tcp || true
           fi
 
-      - name: Run Docker Container
-        run: sudo docker run -d -p 3000:3000 --name pharmacy-container bilanox/pharmacy
+      - name: Create .env file
+        run: |
+          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" > .env
+          echo "PORT=${{ secrets.PORT }}" >> .env
+          echo "jwtConstants=${{ secrets.jwtConstants }}" >> .env
+          echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> .env
+          echo "JWT_EXPIRES_IN=${{ secrets.JWT_EXPIRES_IN }}" >> .env
+          echo "NODE_ENV=production" >> .env
+
+      - name: Run Docker Container with .env
+        run: sudo docker run -d -p ${{ secrets.PORT }}:3000 --env-file .env --name pharmacy-container bilanox/pharmacy
