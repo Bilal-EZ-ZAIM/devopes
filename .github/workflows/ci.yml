@@ -38,6 +38,12 @@ jobs:
 
       # Construction de l'image Docker
       - name: Build Docker image
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          PORT: ${{ secrets.PORT }}
+          jwtConstants: ${{ secrets.jwtConstants }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          JWT_EXPIRES_IN: ${{ secrets.JWT_EXPIRES_IN }}
         run: docker build -t bilanox/pharmacy:latest .
 
       # Push de l'image sur Docker Hub
