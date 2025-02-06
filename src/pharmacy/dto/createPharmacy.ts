@@ -34,7 +34,10 @@ export class CreatePharmacyDto {
   email: string;
   @IsOptional()
   @IsNotEmpty({ message: 'isOnDuty is required.' })
-  isOnDuty: string;
+  isOnDuty: boolean;
+
+  @IsNotEmpty({ message: 'isOnGard is required.' })
+  isOnGard: boolean;
 
   @IsOptional()
   @IsString({ message: 'Description must be a string.' })

@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreatePharmacyDto } from './dto/createPharmacy';
-import { Pharmacy } from 'src/schemas/pharmacy.schema';
+import { Pharmacy } from '../schemas/pharmacy.schema';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 
@@ -30,12 +30,12 @@ export class PharmacyServices {
 
   // Get all pharmacies
   async getAllPharmacies(): Promise<Pharmacy[]> {
-    return await this.pharmacyModel.find().exec();
+    return await this.pharmacyModel.find();
   }
 
   // Get a pharmacy by ID
   async getPharmacyById(id: string): Promise<Pharmacy> {
-    return await this.pharmacyModel.findById(id).exec();
+    return await this.pharmacyModel.findById(id);
   }
 
   // Update pharmacy by ID
@@ -57,18 +57,18 @@ export class PharmacyServices {
 
     return await this.pharmacyModel
       .findByIdAndUpdate(id, updateData, { new: true })
-      .exec();
+      ;
   }
 
   // Delete pharmacy by ID
   async deletePharmacy(id: string): Promise<boolean> {
-    const result = await this.pharmacyModel.findByIdAndDelete(id).exec();
+    const result = await this.pharmacyModel.findByIdAndDelete(id);
     return result !== null;
   }
 
   // Set pharmacy as On Duty (Harcasa)
   async setPharmacyOnDuty(id: string): Promise<Pharmacy | null> {
-    const pharmacy: any = await this.pharmacyModel.findById(id).exec();
+    const pharmacy: any = await this.pharmacyModel.findById(id);
     if (!pharmacy) {
       return null;
     }
@@ -143,7 +143,7 @@ export class PharmacyServices {
 
   // Get pharmacy details
   async getPharmacyDetails(id: string) {
-    return this.pharmacyModel.findById(id).exec();
+    return this.pharmacyModel.findById(id);
   }
 
   // Search for pharmacies by distance
@@ -188,7 +188,7 @@ export class PharmacyServices {
 
     // Si aucun critère n'est fourni, retourner toutes les pharmacies
     if (aggregation.length === 0) {
-      return this.pharmacyModel.find().exec();
+      return this.pharmacyModel.find();
     }
 
     return this.pharmacyModel.aggregate(aggregation);
