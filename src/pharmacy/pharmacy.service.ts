@@ -15,7 +15,7 @@ export class PharmacyServices {
     const checkPharmacy = await this.pharmacyModel.findOne({
       email: data.email,
     });
-    console.log(checkPharmacy);
+    
     if (checkPharmacy) {
       throw new HttpException(
         'Pharmacy with this email already exists.',
@@ -23,7 +23,7 @@ export class PharmacyServices {
       );
     }
     const pharmacy = new this.pharmacyModel(data);
-    console.log(pharmacy);
+    
 
     return await pharmacy.save();
   }
